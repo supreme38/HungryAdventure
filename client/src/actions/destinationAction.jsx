@@ -10,7 +10,6 @@ export function destinationSet({
   carrier,
   imageUrl }) {
   return function (dispatch) {
-    console.log('PRICE--->', price);
     return dispatch({ type: 'SET_DESTINATION',
     payload: {
       price,

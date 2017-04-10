@@ -8,23 +8,28 @@ class GoogleMaps extends Component {
   constructor(props){
     super(props);
   }
-  
+
   render() {
     if (this.props.locator === undefined) {
       return (
         <div>loading</div>
       )
-    } else {
+    }
       return (
         <div className="maps">
           <GoogleMapReact
             defaultCenter={ {lat: this.props.locator.latitude, lng: this.props.locator.longitude} }
             defaultZoom={13}
-            bootstrapURLKeys={{key: API.googleMaps()}} />
+            bootstrapURLKeys={{key: API.googleMaps()}}
+            key={ this.props.locator.latitude } 
+            />
         </div>
       );
     }
-  }
 }
 
-export default GoogleMaps
+const mapStateToProps = (state) => ({
+  ...state
+})
+
+export default connect(mapStateToProps, null)(GoogleMaps)

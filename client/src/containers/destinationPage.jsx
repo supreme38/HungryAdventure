@@ -1,34 +1,44 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import GoogleMaps from './GoogleMaps'
-//+++++ Imported Components
+import GoogleMaps from './GoogleMaps';
+import HotelList from '../components/HotelList';
+// +++++ Imported Components
+import Weather2 from '../components/weather'
+import { Link } from 'react-router-dom';
+
+// +++++ Imported Components
 
 
 class destinationPage extends Component {
 
-  constructor (props){
-  super(props);
-}
+  constructor(props) {
+    super(props);
+  }
 
   render() {
-    console.log('*******************', this.props)
+    const heroImage = this.props.destination.imageUrl[0];
+
     return (<div>
-        <h1> Hungry Adventure </h1>
-        <GoogleMaps locator={this.props.geo.locator}/>
-        {/*< HEADERIMG />*/}
-        {/*< INFO Component />*/}
-        {/*< Weather Component />*/}
-        {/*< Map Component />*/}
-        <h1> {this.props.destination.city}</h1>
-        <h1> {this.props.destination.country}</h1>
-        <h1>$ {this.props.destination.price}</h1>
-      </div>
+      <div><Link to="/events">EVENTS</Link></div>
+      <h1> Hungry Adventure </h1>
+      <div className="hero" style={{ backgroundImage: `url(${heroImage})` }} />
+      <GoogleMaps locator={this.props.geo.locator} />
+      <h1> current budget: ${this.props.budget.flight}</h1>
+      <h1> {this.props.destination.city}</h1>
+      <h1> {this.props.destination.country}</h1>
+      <h1>$ {this.props.destination.price}</h1>
+      <Weather2 sunny={this.props.geo.locator} arrival={this.props.destination.arrivalDate} />
+      {/* < HEADERIMG />*/}
+      {/* < INFO Component />*/}
+      {/* < Weather Component />*/}
+      <HotelList hotels={this.props.hotels} destination={this.props.destination} />
+    </div>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   ...state,
 });
 
-export default connect(mapStateToProps, null )(destinationPage);
+export default connect(mapStateToProps, null)(destinationPage);

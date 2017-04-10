@@ -3,25 +3,27 @@ import { connect } from 'react-redux';
 import { Col, Carousel } from 'react-bootstrap';
 import { destinationSet } from '../actions/destinationAction';
 import { fetchGeo } from '../actions/geoAction';
+import { fetchHotels } from '../actions/hotelAction';
+import { flightBudget } from '../actions/budgetAction';
 import { history, Link } from 'react-router-dom'
 import { browserHistory } from 'react-router';
-
+import { fetchEvents } from '../actions/eventsAction'
+import { fetchWeather } from '../actions/weatherAction'
 
 class DestinationEntry extends Component {
 
 constructor (props){
   super(props);
-  console.log('PROPS-->', props)
 }
-
 
 handleSelect = (destination) => {
-  console.log('--->', destination);
+  this.props.flightBudget({price: destination.price, original: Number(this.props.budget.original)});
+  this.props.fetchHotels({city: destination.city});
   this.props.fetchGeo({location: destination.city})
-    .then(() =>   this.props.destinationSet(destination));
+    .then(() => this.props.destinationSet(destination));
+  this.props.fetchEvents({location: destination.city})
   this.props.redirect('/destination');
 }
-
 
 render () {
   return (<div>
@@ -59,16 +61,17 @@ render () {
       </div>
     </Col>
     ))}
+    </div>
+    )
   }
-  </div>
-  )
 }
-}
-const mapStateToProps = ({destinations}) => ({
-  destinations: destinations,
+const mapStateToProps = ({destinations, budget}) => ({
+  destinations,
+  budget,
 });
 
-export default connect(mapStateToProps , { destinationSet, browserHistory, fetchGeo } )(DestinationEntry);
+export default connect(mapStateToProps , { destinationSet, browserHistory, fetchGeo, fetchHotels, flightBudget, fetchEvents, fetchWeather } )(DestinationEntry);
+
 
 /*
 
