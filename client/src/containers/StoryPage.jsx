@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Parallax, Background } from 'react-parallax';
 
 class StoryPage extends Component {
 
@@ -7,44 +8,68 @@ class StoryPage extends Component {
   render() {
     if (!this.props.hotel) {
       return (
-        <div>
-          <img className="storyBackground" src={this.props.destination.imageUrl[0]} />
-          <div >{this.props.destination.city}</div>
-          <div>{this.props.destination.country}</div>
-          <div>$ {this.props.destination.price}</div>
-          {this.props.events.map((event, i) => <div key={i}>{event.name}</div>)}
-        </div>
+        <div className="parallaxContainer">
+        <section className="parallax">
+          <h1 className="storyCity">{this.props.destination.city}</h1>
+          <div className="infoContainer">
+            {this.props.destination.country}
+            <div >{this.props.destination.city}</div>
+            <div>{this.props.destination.country}</div>
+            <div>$ {this.props.destination.price}</div>
+            {this.props.events.map((event, i) => <div key={i}>{event.name}</div>)}
+          </div>
+          <div className="space" />
+        </section>
+      </div>
       );
     } else if (!this.props.events) {
       return (
-        <div>
-          <img className="storyBackground" src={this.props.destination.imageUrl[0]} />
-          <div >{this.props.destination.city}</div>
-          <div>{this.props.destination.country}</div>
-          <div>$ {this.props.destination.price}</div>
-          <div>{this.props.hotel.hotel}</div>
-          <div>$ {this.props.hotel.price}</div>
-        </div>
+        <div className="parallaxContainer">
+        <section className="parallax">
+          <h1 className="storyCity">{this.props.destination.city}</h1>
+          <div className="infoContainer">
+            {this.props.destination.country}
+            <div >{this.props.destination.city}</div>
+            <div>{this.props.destination.country}</div>
+            <div>$ {this.props.destination.price}</div>
+            <div>{this.props.hotel.hotel}</div>
+            <div>$ {this.props.hotel.price}</div>
+          </div>
+          <div className="space" />
+        </section>
+      </div>
       );
     } else if (!this.props.event && !this.props.hotel) {
       return (
-      <div>
-        <img className="storyBackground" src={this.props.destination.imageUrl[0]} />
-        <div >{this.props.destination.city}</div>
-        <div>{this.props.destination.country}</div>
-        <div>$ {this.props.destination.price}</div>
+        <div className="parallaxContainer">
+        <section className="parallax">
+          <h1 className="storyCity">{this.props.destination.city}</h1>
+          <div className="infoContainer">
+            {this.props.destination.country}
+            <div >{this.props.destination.city}</div>
+            <div>{this.props.destination.country}</div>
+            <div>$ {this.props.destination.price}</div>
+          </div>
+          <div className="space" />
+        </section>
       </div>
-      )
+      );
     }
+
+
     return (
-      <div>
-        <img className="storyBackground" src={this.props.destination.imageUrl[0]} />
-        <div >{this.props.destination.city}</div>
-        <div>{this.props.destination.country}</div>
-        <div>$ {this.props.destination.price}</div>
-        <div>{this.props.hotel.hotel}</div>
-        <div>$ {this.props.hotel.price}</div>
-        {this.props.events.map((event, i) => <div key={i}>{event.name}</div>)}
+      <div className="parallaxContainer">
+        <section className="parallax">
+          <h1 className="storyCity">{this.props.destination.city}</h1>
+          <div className="infoContainer">
+            {this.props.destination.country}
+            <div>$ {this.props.destination.price}</div>
+            <div>{this.props.hotel.hotel}</div>
+            <div>$ {this.props.hotel.price}</div>
+            {this.props.events.map((event, i) => <div key={i}>{event.name}</div>)}
+          </div>
+          <div className="space" />
+        </section>
       </div>
     );
   }
