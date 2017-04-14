@@ -3,7 +3,7 @@ export default function reduce(state = {}, action) {
     case 'GET_BUDGET_FULFILLED' : {
       return { ...state,
         original: action.payload,
-        loading: true }
+        loading: true };
     }
     case 'FLIGHT_BUDGET_FULFILLED' : {
       return { ...state, flight: action.payload.flight };
@@ -24,21 +24,21 @@ export default function reduce(state = {}, action) {
     }
     case 'YELP_BUDGET_FULFILLED' : {
       let yelpTotal;
-      let converted = [];
+      const converted = [];
       if (action.payload.yelpEvents.length === 0) {
-        yelpTotal = 0
+        yelpTotal = 0;
       } else {
         action.payload.yelpEvents.forEach((event) => {
           if (event.price === '$') {
-            converted.push(10)
+            converted.push(10);
           } else if (event.price === '$$') {
-            converted.push(20)
+            converted.push(20);
           } else if (event.price === '$$$') {
-            converted.push(45)
+            converted.push(45);
           } else {
-            converted.push(100)
+            converted.push(100);
           }
-        })
+        });
         yelpTotal = converted.reduce((a, b) => a + b);
       }
       return { ...state, yelpEvents: yelpTotal };
