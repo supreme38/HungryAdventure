@@ -10,7 +10,7 @@ const frommers = require('../controllers/frommers.js');
 const googlePlacesController = require('../controllers/googlePlacesFlights');
 
 module.exports = (app, express) => {
-  app.get('/api/flights', flightController.getFlights);
+  // app.get('/api/flights/', flightController.getFlights);
   app.get('/api/geocoder', geocoderController.location);
   app.get('/api/weather', weatherController.getWeather);
   app.get('/api/yelp', yelp.getEvents);

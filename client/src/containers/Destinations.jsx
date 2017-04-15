@@ -7,14 +7,24 @@ import { saveSearchQuery } from '../actions/saveSearchQueryAction'
 import Auth from './FacebookAuth';
 import { Jumbotron } from 'react-bootstrap';
 import { reset } from '../actions/resetState'
-import { getBudget, resetBudget } from '../actions/budgetAction'
-
+import { getBudget, resetBudget } from '../actions/budgetAction';
+import { location } from 'react-router-dom'
 
 class Destinations extends Component {
 
   
 componentWillMount() {
   this.props.resetBudget();
+  console.log(this.props.location)
+  console.log('WHAT ARE THE PROPS BRUH', this.props.budget)
+  if(this.props.budget.original === undefined){
+    const arr = this.props.location.pathname.split('/');
+    this.props.fetchDestinations({
+      Budget: Number(arr[2]),
+      arrivalDate: arr[3],
+      departDate: arr[4]
+    })
+  }
 }
 
 submit = (values) => {

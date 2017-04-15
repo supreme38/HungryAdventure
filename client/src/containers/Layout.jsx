@@ -28,6 +28,7 @@ class Layout extends React.Component {
   }
 
   submit = (values) => {
+  console.log('THESE ARE THE VALUES BRUH', values)
   let saveQueryObj = {
     email: this.props.email || 'none',
     budget: values.Budget,
@@ -35,7 +36,7 @@ class Layout extends React.Component {
     endDate: values.arrivalDate,
   }
     this.props.getBudget(values);
-    this.props.history.push('/flights');
+    this.props.history.push(`/flights/${values.Budget}/${values.arrivalDate}/${values.departDate}`);
     this.props.fetchDestinations(values)
       .then(() =>{
         this.props.saveSearchQuery(saveQueryObj);
