@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Col, Button } from 'react-bootstrap';
-import { currentHotel } from '../actions/currentState';
+import { currentHotel } from '../actions/currentStateAction';
 import { hotelBudget } from '../actions/budgetAction';
 import { hotelImage } from '../actions/budgetBarAction';
 import { toggleHotels, toggleSelect } from '../actions/toggleAction';

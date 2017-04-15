@@ -9,7 +9,7 @@ import { history, Link } from 'react-router-dom'
 import { browserHistory } from 'react-router';
 import { fetchEvents } from '../actions/eventsAction'
 import { fetchWeather } from '../actions/weatherAction'
-import { currentDestination } from '../actions/currentState';
+import { currentDestination } from '../actions/currentStateAction';
 import { destinationImage } from '../actions/budgetBarAction';
 import { fetchViator } from '../actions/viatorAction';
 import { fetchFrommers } from '../actions/frommersAction';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { currentViator } from '../actions/currentState';
+import { currentViator } from '../actions/currentStateAction';
 import { viatorBudget } from '../actions/budgetAction';
  
 

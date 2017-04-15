@@ -4,7 +4,7 @@ import { Media, Col } from 'react-bootstrap';
 import StarRatingComponent from 'react-star-rating-component';
 import Pin from './pin';
 import GoogleMaps from '../containers/GoogleMaps';
-import { currentEvents } from '../actions/currentState';
+import { currentEvents } from '../actions/currentStateAction';
 import { yelpBudget } from '../actions/budgetAction';
 import { eventsImage } from '../actions/budgetBarAction';
 
