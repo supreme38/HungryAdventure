@@ -1,16 +1,19 @@
-var express = require('express'),
-  path = require('path'),
-  dotenv = require('dotenv');
+const express = require('express');
+const path = require('path');
+const dotenv = require('dotenv');
+const cors = require('cors');
+
 dotenv.config();
 
 const pg = require('./config/database.js');
 
 const app = express();
+app.use(cors());
 require('./config/routes.js')(app, express);
-
 
 app.use(express.static(path.join(`${__dirname}/../build`)));
 app.use(express.static(path.join(`${__dirname}/../public`)));
+
 
 app.get('*', (request, response) => {
   response.sendFile(path.resolve(`${__dirname}/../public`, 'index.html'));

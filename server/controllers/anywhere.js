@@ -1,6 +1,5 @@
 const rp = require('request-promise');
 const anywhereHelper = require('../helpers/anywhereHelper.js');
-
 const dummyFlights = require('../dummy/dummyFlights.js');
 
 module.exports = {
@@ -8,6 +7,7 @@ module.exports = {
     res.send(dummyFlights);
   },
   getAnywhere: (req, res) => {
+    console.log('req dot query', req.query);
     const departDate = req.query.departDate.slice(0, 10);
     const arrivalDate = req.query.arrivalDate.slice(0, 10);
 
@@ -22,13 +22,13 @@ module.exports = {
         const parsedData = JSON.parse(data);
         const top = anywhereHelper.sortFunc(parsedData.Quotes);
         const filterTop = anywhereHelper.uniqueFunc(top);
-        const top21 = filterTop.length >= 21 ? filterTop.slice(0, 21) : filterTop;
-        const budgetTop = anywhereHelper.budgetFunc(top21, req.query.Budget);
+        const top50 = filterTop.length >= 50 ? filterTop.slice(0, 50) : filterTop;
+        const budgetTop = anywhereHelper.budgetFunc(top50, req.query.Budget);
         const finalarray = [];
         budgetTop.forEach(() => {
           finalarray.push({});
         });
-        anywhereHelper.trimSkyBody(finalarray, top21, parsedData);
+        anywhereHelper.trimSkyBody(finalarray, budgetTop, parsedData);
         return finalarray;
       })
       .catch((err) => {

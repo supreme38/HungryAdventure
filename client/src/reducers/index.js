@@ -6,21 +6,41 @@ import destination from './destinationReducer';
 import geo from './geoReducer';
 import hotels from './hotelReducer';
 import budget from './budgetReducer';
-import events from './eventsReducer';
+import bar from './budgetBarReducer';
+import yelp from './yelpReducer';
 import profile from './facebookReducer';
-import weather from './weatherReducer'
+import weather from './weatherReducer';
+import current from './currentStateReducer';
+import saveQuery from './saveSearchQueryReducer';
+import viator from './viatorReducer';
+import toggle from './toggleReducer';
+import frommers from './frommersReducer';
 
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   destinations,
   profile,
   destination,
   geo,
   hotels,
   budget,
-  events,
+  bar,
+  yelp,
+  current,
   form: formReducer,
   weather,
+  saveQuery,
+  viator,
+  toggle,
+  frommers,
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === 'RESET_STATE') {
+    state = undefined
+  }
+
+  return appReducer(state, action)
+}
 
 export default rootReducer;

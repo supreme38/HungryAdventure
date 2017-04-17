@@ -11,16 +11,17 @@ export function destinationSet({
   imageUrl }) {
   return function (dispatch) {
     return dispatch({ type: 'SET_DESTINATION',
-    payload: {
-      price,
-      arrivalDate,
-      departureDate,
-      originTerminal,
-      city,
-      country,
-      IataCode,
-      carrier,
-      imageUrl,
-    },
-  });
-}}
+      payload: {
+        price,
+        arrivalDate,
+        departureDate,
+        originTerminal,
+        city,
+        country,
+        IataCode,
+        carrier,
+        imageUrl,
+      },
+    });
+  };
+}

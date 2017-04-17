@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+// +++++ Imported Components
+import { Link } from 'react-router-dom';
+import { Col } from 'react-bootstrap';
 import GoogleMaps from './GoogleMaps';
 import HotelList from '../components/HotelList';
-// +++++ Imported Components
-import Weather2 from '../components/weather'
-import { Link } from 'react-router-dom';
+import Weather from '../components/weather';
+import BudgetBar from '../components/budgetBar';
+import FrommersInfo from './FrommersInfo';
+import ViatorEvents from './ViatorEvents';
+import YelpEvents from './YelpEvents';
 
-// +++++ Imported Components
-
+// Charts
+import DonutChart from 'react-donut-chart';
 
 class destinationPage extends Component {
 
@@ -16,22 +21,64 @@ class destinationPage extends Component {
   }
 
   render() {
-    const heroImage = this.props.destination.imageUrl[0];
-
+    const budget = this.props.budget.original;
+    const flightCost = this.props.budget.flight || 0;
+    const hotelCost = this.props.budget.hotel || 0;
+    const activityCost = this.props.budget.viatorEvents || 0;
+    const foodCost = this.props.budget.yelpEvents || 0;
+    const totalBudget = budget - flightCost - hotelCost - activityCost - foodCost;
     return (<div>
-      <div><Link to="/events">EVENTS</Link></div>
       <h1> Hungry Adventure </h1>
-      <div className="hero" style={{ backgroundImage: `url(${heroImage})` }} />
-      <GoogleMaps locator={this.props.geo.locator} />
-      <h1> current budget: ${this.props.budget.flight}</h1>
-      <h1> {this.props.destination.city}</h1>
-      <h1> {this.props.destination.country}</h1>
-      <h1>$ {this.props.destination.price}</h1>
-      <Weather2 sunny={this.props.geo.locator} arrival={this.props.destination.arrivalDate} />
-      {/* < HEADERIMG />*/}
-      {/* < INFO Component />*/}
-      {/* < Weather Component />*/}
+      <div
+        className="hero" style={{
+          backgroundImage: `url(${this.props.destination.imageUrl[0]})`,
+          height: '70%',
+
+        }}
+      ><DonutChart
+        data={[{ label: `Remaining ( $ ${totalBudget} )`,
+          value: totalBudget,
+          isEmpty: true,
+        },
+        { label: ` Hotel ( $ ${hotelCost} )`,
+          value: hotelCost },
+        { label: ` Flight ( $ ${flightCost} )`,
+          value: flightCost },
+        { label: `Attractions ( $ ${activityCost} )`,
+          value: activityCost },
+        { label: `Food ( $ ${foodCost} )`,
+          value: foodCost,
+        },
+        ]} height={200} width={200} legend={false} className="donutAlign"
+      />
+      </div>
+      <div
+        style={{
+          backgroundColor: 'white',
+          borderRadius: '15px',
+          margin: 'auto',
+          width: '50%',
+          textAlign: 'center',
+          top: '-5%',
+        }}
+      >
+        {this.props.destination.IataCode}
+      </div>
+      <div className="container col-sm-offset-3" style={{ display: 'grid', marginBottom: '5%' }}>
+        <BudgetBar budget={this.props.budget} />
+      </div>
+      <div style={{ marginBottom: '10%' }}>
+        <Col sm={6} className="col-md-offset-1">
+          <FrommersInfo />
+        </Col>
+        <Weather />
+      </div>
+      <div style={{ display: 'grid' }} />
+      <GoogleMaps locator={this.props.geo.locator} hotelsArr={this.props.hotels.hotels} />
       <HotelList hotels={this.props.hotels} destination={this.props.destination} />
+      <ViatorEvents />
+      <YelpEvents />
+      <button> <Link to="/storypage"> CHECKOUT</Link></button>
     </div>
     );
   }

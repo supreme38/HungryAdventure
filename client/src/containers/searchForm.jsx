@@ -11,7 +11,6 @@ import 'react-widgets/dist/css/react-widgets.css';
 import { Field, reduxForm } from 'redux-form';
 import { DateTimePicker, Multiselect } from 'react-widgets';
 import moment from 'moment';
-// import { Calendar } from 'react-date-range'; date range stuff
 import momentLocaliser from '../../../node_modules/react-widgets/lib/localizers/moment';
 momentLocaliser(moment);
 
@@ -30,32 +29,26 @@ class searchForm extends Component {
   render() {
   	const { handleSubmit, pristine, reset, submitting } = this.props;
     return (<div>
-      <style type="text/css">{`
-          .btn-custom {
-              background-color: transparent;
-              color: #438496;
-              border-width: medium;
-              border-radius: 5px;
-              border-color: #438496;
-              margin-left: 5px;
-          }
-      `}</style>
       <center>
         <Form inline onSubmit={handleSubmit}>
-
+          
           <FormGroup>
             <div className="rw-datetimepicker rw-widget budgetSearch" >
-              <Field className="rw-input" name="Budget" component="input" type="value" placeholder="Budget" required />
+              <Field className="rw-input" name="Budget" component="input" type="value" placeholder="Budget" />
             </div>
           </FormGroup>
+
           <FormGroup>
-            <Field name="departDate" showTime={false} component={renderDateTimePicker} type="text" placeholder="Departure Date" />
+            <div className="budgetSearch" >
+              <Field name="departDate" showTime={false} component={renderDateTimePicker} type="text" placeholder="Departure Date" />
+            </div>
           </FormGroup>
 
           <FormGroup>
-            <Field name="arrivalDate" showTime={false} component={renderDateTimePicker} type="text" placeholder="Arrival Date" />
+            <div className="budgetSearch" >
+              <Field name="arrivalDate" showTime={false} component={renderDateTimePicker} type="text" placeholder="Arrival Date" />
+            </div>
           </FormGroup>
-
           <FormGroup>
             <Button bsStyle="custom" type="submit"> Submit </Button>
           </FormGroup>

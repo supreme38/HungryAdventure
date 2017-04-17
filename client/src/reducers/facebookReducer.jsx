@@ -1,7 +1,6 @@
 export default function reducer(state = {}, action) {
   switch (action.type) {
     case 'LOAD_PROFILE_FULFILLED': {
-      console.log('+++++++', action.payload);
       return { ...state,
         name: action.payload.name,
         email: action.payload.email,

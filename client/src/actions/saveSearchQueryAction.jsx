@@ -1,16 +1,12 @@
 import axios from 'axios';
 
-export default function saveSearchQuery({ email, budget, startDate, endDate, timestamp }) {
+export function saveSearchQuery(queryObj) {
   return function (dispatch) {
-    console.log('RETURNED OBJECT--->', email, budget, startDate, endDate, timestamp);
-    return axios.get('/api/dbQuery', {
-      params: { email, budget, startDate, endDate, timestamp } })
+    return axios.get('/api/dbSearchQuerySave', {
+      params: queryObj })
       .then((response) => {
-        console.log(response);
-        return dispatch({ type: 'SAVE_SEARCHQUERY_FULFILLED', payload: response.data[0] });
+        return dispatch({ type: 'SAVE_SEARCHQUERY_FULLFILLED', payload: response.data });
       })
-      .catch((err) => {
-        return dispatch({ type: 'SAVE_SEARCHQUERY_FAILED', payload: err });
-      });
+      .catch(err => dispatch({ type: 'SAVE_SEARCHQUERY_FAILED', payload: err }));
   };
 }

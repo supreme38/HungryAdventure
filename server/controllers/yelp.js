@@ -2,17 +2,17 @@ const rp = require('request-promise');
 
 module.exports = {
   getEvents(req, res) {
-    const where = req.query.location || 'new york'
+    const where = req.query.location || 'new york';
     const options = {
-      uri: `https://api.yelp.com/v3/businesses/search?term=events&location=${where}`,
+      uri: `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${where}`,
       headers: {
-          'Authorization': process.env.YELP
+        Authorization: process.env.YELP,
       },
-      json: true
-   };
+      json: true,
+    };
 
-   rp(options)
+    rp(options)
     .then(response => res.send(response))
     .catch(err => res.send(err));
-  }
-}
+  },
+};

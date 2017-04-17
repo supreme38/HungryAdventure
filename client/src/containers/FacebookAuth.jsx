@@ -6,7 +6,7 @@ import queryDB from '../actions/facebookAction'
 
 //Imported Component
 import Search from './searchForm';
-import FacebookLogin, {componentClicked} from 'react-facebook-login';
+import FacebookLogin, {componentClicked} from '../components/facebookLoginIcon';
 
 class FacebookAuth extends React.Component {
 
@@ -28,24 +28,23 @@ class FacebookAuth extends React.Component {
   }
 
 responseFacebook = (response) => {
-  console.log('++++++++',response);
   this.props.queryDB(response);
 
 }
 
   render () {
     if(this.props.fbpicture === undefined){
-      return <FacebookLogin
+      return (<div className='facebookButton'>
+        <FacebookLogin
        appId='process.env.FB_CLIENT_ID'
        autoLoad={true}
        fields="name,email,picture"
        onClick={componentClicked}
        callback={this.responseFacebook}
-       icon="fa-facebook" />
+       icon="fa-facebook" /></div>)
     } else {
      return (<div>
-      <h1>Hi ! {this.props.name}</h1>
-       <img src={this.props.fbpicture}></img>
+       <img className='user' src={this.props.fbpicture}></img>
        </div>
      );
    }

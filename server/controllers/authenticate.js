@@ -2,7 +2,7 @@ const passport = require('passport');
 
 module.exports = {
   localAccept: (req, res) => {
-    res.redirect('/users/' + req.user.username);
+    res.redirect(`/users/${req.user.username}`);
   },
 
   authLogin: (req, res) => {
@@ -22,8 +22,8 @@ module.exports = {
 
   authProfile: (req, res) => {
     require('connect-ensure-login').ensureLoggedIn(),
-    function(req, res){
-      res.render('profile', {user: req.user});
+    function (req, res) {
+      res.render('profile', { user: req.user });
     };
   },
 };

@@ -6,21 +6,89 @@
 
   <!-- Bootstrap -->
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
 
   <!-- Style Sheet -->
   <link href="//fonts.googleapis.com/css?family=Gudea|Quicksand" rel="stylesheet">
   <link rel="stylesheet" href="style/minify/style.css">
+
   <!-- Title -->
   <title> Hungry Adventure </title>
 </head>
 
-  <div id="fb-root"></div>
-  <div id="app"></div>
-  <script src="/bundle.js" ></script>
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+  $('.carousel[data-type="multi"] .item').each(function(){
+    var next = $(this).next();
+    if (!next.length) {
+      next = $(this).siblings(':first');
+    }
+    next.children(':first-child').clone().appendTo($(this));
+
+    for (var i=0;i<2;i++) {
+      next=next.next();
+      if (!next.length) {
+      	next = $(this).siblings(':first');
+    	}
+
+      next.children(':first-child').clone().appendTo($(this));
+    }
+  });
+</script>
+<body id="page-top">
+<div id="app"></div>
+<script src="/bundle.js" ></script>
+<!--
+<button onClick="changeData()">change</button>
+<script>
+
+
+//Graph Details
+const budget = 1000;
+const flightCost = 200;
+const hotelCost = 100;
+const activityCost = 100;
+const foodCost = 50;
+const totalBudget = budget - flightCost - hotelCost - activityCost - foodCost;
+
+
+var salesData=[
+  {label:"Budget", color:"#3366CC", value: totalBudget},
+  {label:"Hotel", color:"#DC3912", value: hotelCost},
+  {label:"Activities", color:"#FF9900", value: activityCost},
+  {label:"Food", color:"#109618", value: foodCost},
+  {label:"Flight", color:"#990099", value: flightCost}
+];
+
+
+var svg = d3.select("#graph").append("svg").attr("width",300).attr("height",250);
+svg.append("g").attr("id","quotesDonut");
+
+Donut3D.draw("quotesDonut", salesData, 150, 100, 130, 100, 30, 0);
+  
+function changeData(){
+  Donut3D.transition("quotesDonut", randomData(), 130, 100, 30, 0);
+}
+
+function randomData(){
+  return salesData.map(function(d){ 
+    return {label:d.label, value: d.value +50, color:d.color};});
+}
+
+</script>
+-->
+
+<!-- SCRIPT YOU SHOULD TRANSFER OUT -->
+
+
+
+
+
+<!-- PLEASE TRANSFER THIS OUT-->
+
+
 
 </body>
 </html>
