@@ -23,9 +23,9 @@ class ViatorEvents extends Component {
     if (first !== last) {
       this.state.added.splice(first, 1);
       this.state.added.pop();
-      return this.state[index] = 0;
+      return this.state[index] = "";
     }
-    this.state[index] = 1;
+    this.state[index] = " select";
   }
 
   add = (event, index) => {
@@ -56,11 +56,11 @@ class ViatorEvents extends Component {
           <Col md={6} xs={6}><div className="seeAll" onClick={() => this.expand()}>{this.state.flag}</div></Col>
         </Row>
         {this.props.viator.events.map((event, index) => (
-          <Col md={6} md={3} key={index} className={"eventContainer" + ((index > 3) ? this.state.show : "")}>
+          <Col md={6} md={3} key={index} className={"eventContainer" + (!this.state[index] ? "" : this.state[index]) + ((index > 3) ? this.state.show : "")}>
           <div className="portfolio-box" onClick={() => this.add(event, index)}>
             <img className="eventImg" src={event.image} />
-            <div className ="portfolio-box-caption"><span className="glyphicon glyphicon-shopping-cart" /></div>
-            <div className ="portfolio-box-caption" style={{opacity: this.state[index]}}><span className="glyphicon glyphicon-shopping-cart" /></div> 
+            {/*<div className ="portfolio-box-caption"><span className="glyphicon glyphicon-shopping-cart" /></div>*/}
+            <div className ="portfolio-box-caption"><span className="glyphicon glyphicon-shopping-cart" /></div> 
           </div>
           <div>
           <span className="price">${event.price}</span>
