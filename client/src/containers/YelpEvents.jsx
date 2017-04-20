@@ -58,7 +58,7 @@ class YelpEvents extends Component {
           <Col md={6} xs={6}><div className="seeAll" onClick={() => this.expand()}>{this.state.flag}</div></Col>
         </Row>
         {this.props.yelp.events.map((event, index) => (
-          <Col md={3} key={index} className={"eventContainer" + (!this.state[index] ? "" : this.state[index]) + ((index > 3) ? this.state.show : "")}>
+          <Col md={3} key={index} className={"yelpContainer" + (!this.state[index] ? "" : this.state[index]) + ((index > 3) ? this.state.show : "")}>
           <div className="portfolio-box" onClick={() => this.add(event, index)}>
             <img className="eventImg" src={event.image_url}/>
             <div className ="portfolio-box-caption"><span className="glyphicon glyphicon-shopping-cart" /></div>

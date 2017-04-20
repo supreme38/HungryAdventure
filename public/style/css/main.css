@@ -685,14 +685,17 @@ body #main {
   font: bold 16px Helvetica, Sans-Serif;
 }
 
-.eventContainer {
-  height: 25%;
-}
-
-
 .eventsContainer {
   margin: auto;
   width: 80%;
+}
+
+.yelpContainer {
+  height: 27%;
+}
+
+.viatorContainer {
+  height: 29%;
 }
 
 .eventImg {
@@ -793,8 +796,11 @@ body #main {
       margin-top: 5%;
       margin-bottom: 5%;
     }
-    .eventContainer {
-      margin-bottom:20%;
+    .viatorContainer {
+      margin-bottom:23%;
+    }
+    .yelpContainer {
+      margin-bottom:22%;
     }
     .floatMe {
        float: left;
