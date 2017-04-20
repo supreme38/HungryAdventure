@@ -4,6 +4,7 @@ import { Col, Button, Row } from 'react-bootstrap';
 import { currentViator } from '../actions/currentStateAction';
 import { viatorBudget } from '../actions/budgetAction';
 import Scroll from 'react-scroll';
+import StarRatingComponent from 'react-star-rating-component';
 const scroll = Scroll.animateScroll;
 
 
@@ -61,9 +62,17 @@ class ViatorEvents extends Component {
             <img className="eventImg" src={event.image} />
             <div className ="portfolio-box-caption"><span className="glyphicon glyphicon-shopping-cart" /></div> 
           </div>
-          <div>
-          <span className="price">${event.price}</span>
-          <a href={event.url}>{event.title}</a>
+          <div className="detailsContainer">
+            <span className="price infoSpacing">${event.price}</span>
+            <span><a className="infoSpacing textGrey" href={event.url}>{event.title}</a></span>
+            <div>
+              <a className="textGrey" href={event.reviews}>{event.count} Reviews</a>
+              <StarRatingComponent
+                name="rating"  
+                starCount={5}
+                value={event.rating}
+              />
+            </div>
           </div>
         </Col>
         ))}

@@ -7,6 +7,10 @@ import { StoryPin } from '../components/Pins';
 import { pinArray, yelpPrice } from '../../utils/storyPageHelpers';
 
 class StoryPage extends Component {
+   componentWillMount() {
+    window.scrollTo(0, 0);
+   }
+
   render() {
     const budget = this.props.budget.original;
     const flightCost = this.props.budget.flight || 0;
@@ -15,6 +19,7 @@ class StoryPage extends Component {
     const foodCost = this.props.budget.yelpEvents || 0;
     const totalBudget = budget - flightCost - hotelCost - activityCost - foodCost;
     const mapArray = pinArray(this.props);
+
     return (
       <div className="parallaxContainer">
         <section

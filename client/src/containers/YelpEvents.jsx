@@ -5,6 +5,7 @@ import { yelpBudget } from '../actions/budgetAction';
 import { eventsImage } from '../actions/budgetBarAction';
 import { Col, Button, Row } from 'react-bootstrap';
 import Scroll from 'react-scroll';
+import StarRatingComponent from 'react-star-rating-component';
 const scroll = Scroll.animateScroll;
 
 
@@ -63,10 +64,19 @@ class YelpEvents extends Component {
             <img className="eventImg" src={event.image_url}/>
             <div className ="portfolio-box-caption"><span className="glyphicon glyphicon-shopping-cart" /></div>
           </div>
-          <div>
-            <span className="price">{event.price}</span>
-            <a href={event.url}>{event.name}</a>
-          </div>
+              <div className="detailsContainer">
+              <span className="infoSpacing price">{event.price}</span>
+              <a className="infoSpacing textGrey" href={event.url}>{event.name}</a>
+              <span className="infoSpacing textGrey">{event.categories[0].title}</span>
+            <div>
+              <a className="textGrey" href={event.url}>{event.review_count} Reviews</a>
+              <StarRatingComponent
+                name="rating"  
+                starCount={5}
+                value={event.rating}
+              />
+              </div>
+            </div>
         </Col>
         ))}
         <div className="spaceMe"></div>

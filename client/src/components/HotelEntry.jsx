@@ -71,8 +71,8 @@ class HotelEntry extends Component {
                 <div className ="portfolio-box-caption"><div className="iconWrapper"><span className="glyphicon glyphicon-shopping-cart" /></div></div>
                 <div className='card-text hotel-text'>
                     <div className="hotelInfo">
-                       <span className="price">${hotel.price}</span>
-                       <span className="price">{hotel.hotel}</span>
+                       <span className="infoSpacing">${hotel.price}</span>
+                       <span className="infoSpacing">{hotel.hotel}</span>
                       {Array(Math.floor(hotel.rating)).fill(0).map((elem, i) =>
                         <span key={hotel.id + i} className="glyphicon glyphicon-star" />,
                       )}

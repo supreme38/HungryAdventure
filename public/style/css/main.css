@@ -489,9 +489,6 @@ body {
   color: white;
 }
 
-.space {
-  padding-top: 20%;
-}
 
 @media screen and (max-width: 720px) {
   .parallax {
@@ -514,6 +511,10 @@ pad {
   padding: 0;
 }
 
+.space {
+  padding-bottom: 20%;
+  padding-top: 10%;
+}
 
 /*+++++++++++++++
 +++ D3 Styles +++
@@ -686,6 +687,7 @@ body #main {
 .eventsContainer {
   margin: auto;
   width: 80%;
+  /*padding-top: 5%;*/
 }
 
 .yelpContainer {
@@ -699,13 +701,15 @@ body #main {
 .eventImg {
   width: 100%;
   height: 200px;
-  border-radius: 4px;
+  /*border-radius: 4px;*/
   cursor: pointer;
 }
 
-.price {
-  font-weight: bold;
+.infoSpacing {
+  /*font-weight: bold;*/
   padding-right: 5px;
+  /*display: inline-block;*/
+  /*color: white; */
 }
 
 .hide {
@@ -717,7 +721,7 @@ body #main {
 }
 
 .spaceMe {
-  padding-top: 10%;
+  padding-bottom: 15%;
 }
 
 .pageContainer {
@@ -891,3 +895,20 @@ body.modal-open .supreme-container {
   top: -5px;
 }
 
+.price {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.textGrey {
+  color: #484848;
+}
+
+i {
+  color: coral;
+}
+
+.dv-star-rating {
+  float:left;
+  padding-right: 5px;
+}
