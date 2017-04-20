@@ -8,7 +8,7 @@
 **Scrum Master**:
 * [Vincent Liu](https://github.com/supreme38)
 
-**Developement Team Members**:
+**Development Team Members**:
 * [Cameron Dunne](https://www.github.com/camdunne)
 * [Bryam Pacheco](https://github.com/xbryan813x)
 
