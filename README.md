@@ -16,4 +16,4 @@
 ![index view1](http://i300.photobucket.com/albums/nn38/bpacheco813/homeScreen_zpsg9zpk9lb.png)
 ![index view2](http://i300.photobucket.com/albums/nn38/bpacheco813/mainView2_zpsn2usu6jn.png)
 ![index view3](http://i300.photobucket.com/albums/nn38/bpacheco813/mainView3_zpsajuku74y.png)
-![index view4](http://i300.photobucket.com/albums/nn38/bpacheco813/mainView4_zpsuswy6knl.pn)
+![index view4](http://i300.photobucket.com/albums/nn38/bpacheco813/mainView4_zpsuswy6knl.png)
