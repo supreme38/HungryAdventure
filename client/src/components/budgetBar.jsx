@@ -3,9 +3,6 @@ import { connect } from 'react-redux';
 import { Col } from 'react-bootstrap';
 
 class budgetBar extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div style={{ width: '70%', marginBottom: '5%' }}>

@@ -1,8 +1,9 @@
 .DS_Store
 node_modules
 .env
-build
 keys
+env.json
+build
 public/style/minify
 
 =#.##

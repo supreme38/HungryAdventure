@@ -29,8 +29,8 @@ class FacebookAuth extends React.Component {
 
 responseFacebook = (response) => {
   this.props.queryDB(response);
-
 }
+
 
   render () {
     if(this.props.fbpicture === undefined){
@@ -45,15 +45,16 @@ responseFacebook = (response) => {
     } else {
      return (<div>
        <img className='user' src={this.props.fbpicture}></img>
-       </div>
+      </div>
      );
    }
   }
 }
 
 //Connects to store
-const mapStateToProps = ({profile}) => ({
-...profile
+const mapStateToProps = ({profile, current}) => ({
+...profile,
+...current
 });
 
 export default connect(mapStateToProps, {queryDB})(FacebookAuth);

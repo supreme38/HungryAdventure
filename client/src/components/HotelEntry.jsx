@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Col, Button } from 'react-bootstrap';
+import { Col, Button, Row } from 'react-bootstrap';
 import { currentHotel } from '../actions/currentStateAction';
 import { hotelBudget } from '../actions/budgetAction';
 import { hotelImage } from '../actions/budgetBarAction';
 import { toggleHotels, toggleSelect } from '../actions/toggleAction';
+import Scroll from 'react-scroll';
+const scroll = Scroll.animateScroll;
 
 class HotelEntry extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      flag: "See More >>",
+    }
   }
 
   add = (hotel, props) => {
     this.props.currentHotel({ hotel });
     this.props.hotelBudget({
+      id: hotel.id,
       hotel: hotel.price,
       budget: props.budget,
       arrivalDate: props.destination.arrivalDate,
@@ -23,7 +29,10 @@ class HotelEntry extends Component {
   }
 
   toggle = ({ hotels }) => {
-    this.props.toggleHotels({ hotels })
+    this.props.toggleHotels({ hotels });
+    scroll.scrollMore(500, { delay : 100 });
+    this.state.flag === "See More >>" ? (this.setState({flag: "See Less <<"})) : (this.setState({flag: "See More >>"}));
+
   }
   select = (hotel, toggle) => {
     this.props.toggleSelect({ hotel, select: toggle.select })
@@ -41,39 +50,39 @@ class HotelEntry extends Component {
     }
     return (
       <div>
-        <div className='container'>
-        <h1 className="title">Hotels</h1>
-        <Button onClick={()=> this.toggle(this.props.toggle)} bsStyle="custom" style={{ float: "right" }}>See More...</Button>
-        <div className="container"></div>
-        {this.props.hotels.hotels.map((hotel, index) => (
-          <Col md={4}
-            key={hotel.id}
-            className={
-              "pad"
-              + ((index >= 3 && !this.props.toggle.hotels) ? " none" : "")
-              + ((this.props.toggle.select === hotel.id)? " select" : "")
-            }
-            onClick={()=> {  this.clickHotel(hotel, this.props) }}
-          >
-            <div className="event-card hotel">
-              <img className="customImg" alt="" src={hotel.pictures[0]} />
-              <div className='card-text'>
-                <div className='portfolio-box-caption-content'>
-                  <div className="project-category text-faded">
-                    {Array(Math.floor(hotel.rating)).fill(0).map((elem, i) =>
-                      <span key={hotel.id + i} className="glyphicon glyphicon-star" />,
-                    )}
-                    <span className="glyphicons glyphicons-star" />
-                  </div>
-                  <div className='project-name'>
-                    ${hotel.price}
-                  </div>
+        <div className='hotelContainer'>
+          <Row className="rowTitle">
+            <Col xs={6} md={6}><h2>Hotels</h2></Col>
+            <Col xs={6} md={6}><div className="seeAll" onClick={()=> this.toggle(this.props.toggle)}>{this.state.flag}</div></Col>
+          </Row>
+    
+          {this.props.hotels.hotels.map((hotel, index) => (
+            <Col md={4}
+              key={hotel.id}
+              className={
+                "pad"
+                + ((index >= 3 && !this.props.toggle.hotels) ? " none" : "")
+                + ((this.props.toggle.select === hotel.id)? " select" : "")
+              }
+              onClick={()=> {  this.clickHotel(hotel, this.props) }}
+            >            
+              <div className="event-card hotel portfolio-box">
+                <img className="customImg" alt="" src={hotel.pictures[0]} />
+                <div className ="portfolio-box-caption"><div className="iconWrapper"><span className="glyphicon glyphicon-shopping-cart" /></div></div>
+                <div className='card-text hotel-text'>
+                    <div className="hotelInfo">
+                       <span className="infoSpacing">${hotel.price}</span>
+                       <span className="infoSpacing">{hotel.hotel}</span>
+                      {Array(Math.floor(hotel.rating)).fill(0).map((elem, i) =>
+                        <span key={hotel.id + i} className="glyphicon glyphicon-star" />,
+                      )}
+                      <span className="glyphicons glyphicons-star" />
+                    </div>
                 </div>
               </div>
-            </div>
-          </Col>
-        ))}
-      </div>
+            </Col>
+          ))}
+        </div>
       </div>
     );
   }

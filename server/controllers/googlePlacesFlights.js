@@ -2,8 +2,10 @@ const rp = require('request-promise');
 
 module.exports = {
   getGoogleData: (req, res) => {
+    const latitude = req.query.lat || 40.750712899999996;
+    const longitude = req.query.long || -73.97659039999999;
     let options = {
-      url: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.750712899999996,-73.97659039999999&radius=50000&type=airport&key=${process.env.GOOGLE_MAPS}`,
+      url: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=25000&type=airport&key=${process.env.GOOGLE_MAPS}`,
       headers: {
         contentType: 'application/json',
       },
@@ -33,13 +35,14 @@ module.exports = {
             country.Countries.forEach((city) => {
               city.Cities.forEach((airport1) => {
                 airport1.Airports.forEach((locate) => {
-                  for (var i = 0; i < locate.Location.length; i++){
-                        var newLocate = locate.Location.split(" ")
+                  for (let i = 0; i < locate.Location.length; i++){
+                        let newLocate = locate.Location.split(" ")
                         match[locate.Id] = newLocate;
                         newLocate[0] = newLocate[0].slice(0,-1)
                         newLocate[0] = Number(newLocate[0]);
                         newLocate[1] = Number(newLocate[1])
-                        newLocate.push(locate.Id)
+                        newLocate.push(locate.CityId)
+
                   }
                 })
               })
@@ -68,7 +71,7 @@ module.exports = {
               }
             }
           }
-            res.json(result)
+            res.json(result[0])
         })
       })
   }

@@ -9,7 +9,10 @@ export default function reduce(state = {}, action) {
       return { ...state, flight: action.payload.flight };
     }
     case 'HOTEL_BUDGET_FULFILLED' : {
-      return { ...state, hotel: action.payload.hotel };
+      if (state.id === action.payload.id) {
+        return { ...state, hotel: 0, id: undefined };
+      }
+      return { ...state, hotel: action.payload.hotel, id: action.payload.id };
     }
     case 'VIATOR_BUDGET_FULFILLED' : {
       let viatorTotal;

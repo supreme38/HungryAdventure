@@ -15,6 +15,7 @@ import saveQuery from './saveSearchQueryReducer';
 import viator from './viatorReducer';
 import toggle from './toggleReducer';
 import frommers from './frommersReducer';
+import airportCode from './userLocationReducer';
 
 
 const appReducer = combineReducers({
@@ -33,6 +34,7 @@ const appReducer = combineReducers({
   viator,
   toggle,
   frommers,
+  airportCode
 });
 
 const rootReducer = (state, action) => {

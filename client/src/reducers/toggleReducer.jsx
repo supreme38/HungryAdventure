@@ -6,6 +6,11 @@ export default function reducer(state = {}, action) {
       };
     }
     case 'TOGGLE_SELECT_FULLFILLED': {
+      if (state.select === action.payload) {
+        return { ...state,
+          select: undefined,
+        };
+      }
       return { ...state,
         select: action.payload,
       };

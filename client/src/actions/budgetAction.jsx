@@ -9,19 +9,20 @@ export function flightBudget({ price, original }) {
 }
 
 export function hotelBudget(props) {
+  const id = props.id;
   const flight = props.budget.flight;
   const hotel = props.hotel;
   const original = Number(props.budget.original);
   const days = getDays(props.arrivalDate, props.departureDate);
   const newBudget = (hotel * days);
-  return { type: 'HOTEL_BUDGET_FULFILLED', payload: { original, flight, hotel: newBudget } };
+  return { type: 'HOTEL_BUDGET_FULFILLED', payload: { original, flight, id, hotel: newBudget } };
 }
 export function viatorBudget(events) {
   return { type: 'VIATOR_BUDGET_FULFILLED', payload: events };
 }
 
 export function yelpBudget(events) {
-  return { type: 'YELP_BUDGET_FULFILLED', payload: events }
+  return { type: 'YELP_BUDGET_FULFILLED', payload: events };
 }
 
 export function resetBudget() {

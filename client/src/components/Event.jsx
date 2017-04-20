@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Media, Col } from 'react-bootstrap';
 import StarRatingComponent from 'react-star-rating-component';
-import YelpPin from './YelpPin';
+import { YelpPin } from './Pins';
 import GoogleMaps from '../containers/GoogleMaps';
 import { currentEvents } from '../actions/currentStateAction';
 import { yelpBudget } from '../actions/budgetAction';
