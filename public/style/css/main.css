@@ -415,7 +415,7 @@ fieldset[disabled] .btn-primary.active {
 .btn {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   border: none;
-  border-radius: 300px;
+  /*border-radius: 300px;*/
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -454,7 +454,7 @@ body {
   height: 100%;
   width: 100%;
   cursor: pointer;
-  border-radius: 4px;
+  /*border-radius: 4px;*/
 }
 .headImg {
   height: 40%;
@@ -654,7 +654,7 @@ body #main {
   -moz-transform: scale(1);
   transition: all 200ms ease-in;
   transform: scale(1);
-  border-radius: 4px;
+  /*border-radius: 4px;*/
 }
 
 .event-card:hover {
