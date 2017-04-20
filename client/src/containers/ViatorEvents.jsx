@@ -59,7 +59,7 @@ class ViatorEvents extends Component {
           <Col md={6} md={3} key={index} className={"eventContainer" + ((index > 3) ? this.state.show : "")}>
           <div className="portfolio-box" onClick={() => this.add(event, index)}>
             <img className="eventImg" src={event.image} />
-            <div className ="portfolio-box-caption"></div>
+            <div className ="portfolio-box-caption"><span className="glyphicon glyphicon-shopping-cart" /></div>
             <div className ="portfolio-box-caption" style={{opacity: this.state[index]}}><span className="glyphicon glyphicon-shopping-cart" /></div> 
           </div>
           <div>

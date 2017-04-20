@@ -61,7 +61,7 @@ class YelpEvents extends Component {
           <Col md={3} key={index} className={"eventContainer" + ((index > 3) ? this.state.show : "")}>
           <div className="portfolio-box" onClick={() => this.add(event, index)}>
             <img className="eventImg" src={event.image_url}/>
-            <div className ="portfolio-box-caption"></div>
+            <div className ="portfolio-box-caption"><span className="glyphicon glyphicon-shopping-cart" /></div>
             <div className ="portfolio-box-caption" style={{opacity: this.state[index]}}><span className="glyphicon glyphicon-shopping-cart" /></div>
           </div>
           <div>
