@@ -13,7 +13,7 @@ class YelpEvents extends Component {
     super(props)
       this.state = {
       show: " hide",
-      flag: true,
+      flag: "See More >>",
       added: [],
     }
   }
@@ -40,20 +40,14 @@ class YelpEvents extends Component {
   }
 
   expand = () => {
-    if (this.state.flag) {
-      this.setState({show: ""});
-      this.setState({flag: false});
-    } else if (!this.state.flag) {
-      this.setState({show: " hide"});
-      this.setState({flag: true});
-    }
+    this.state.flag === "See More >>" ? (this.setState({flag: "See Less <<"}), this.setState({show: ""})) : (this.setState({flag: "See More >>"}), this.setState({show: " hide"}))
     scroll.scrollMore(500, { delay : 100 });
   }
 
   render() {
     if (this.props.yelp.events === undefined) {
       return (
-        <div></div>
+        <div />
       );
     }
 
@@ -61,7 +55,7 @@ class YelpEvents extends Component {
       <div className="eventsContainer">
         <Row className="rowTitle">
           <Col md={6} xs={6}><h2>Resturants</h2></Col>
-          <Col md={6} xs={6}><div className="seeAll" onClick={() => this.expand()}>See all >></div></Col>
+          <Col md={6} xs={6}><div className="seeAll" onClick={() => this.expand()}>{this.state.flag}</div></Col>
         </Row>
         {this.props.yelp.events.map((event, index) => (
           <Col md={3} key={index} className={"eventContainer" + ((index > 3) ? this.state.show : "")}>

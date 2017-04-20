@@ -11,6 +11,9 @@ const scroll = Scroll.animateScroll;
 class HotelEntry extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      flag: "See More >>",
+    }
   }
 
   add = (hotel, props) => {
@@ -28,6 +31,8 @@ class HotelEntry extends Component {
   toggle = ({ hotels }) => {
     this.props.toggleHotels({ hotels });
     scroll.scrollMore(500, { delay : 100 });
+    this.state.flag === "See More >>" ? (this.setState({flag: "See Less <<"}), this.setState({show: ""})) : (this.setState({flag: "See More >>"}), this.setState({show: " hide"}))
+
   }
   select = (hotel, toggle) => {
     this.props.toggleSelect({ hotel, select: toggle.select })
@@ -48,7 +53,7 @@ class HotelEntry extends Component {
         <div className='hotelContainer'>
           <Row className="rowTitle">
             <Col xs={6} md={6}><h2>Hotels</h2></Col>
-            <Col xs={6} md={6}><div className="seeAll" onClick={()=> this.toggle(this.props.toggle)}>See all >></div></Col>
+            <Col xs={6} md={6}><div className="seeAll" onClick={()=> this.toggle(this.props.toggle)}>{this.state.flag}</div></Col>
           </Row>
     
           {this.props.hotels.hotels.map((hotel, index) => (
