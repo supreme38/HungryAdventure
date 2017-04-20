@@ -99,7 +99,7 @@ class StoryPage extends Component {
                       <div className="text-white rule">
                         {event.title}
                       </div>
-                      <a href={`https://www.viator.com/${event.url}`} rel="noopener noreferrer" target="_blank" className="btn-solid" style={{ borderRadius: '0' }}>Buy</a>
+                      <a href={event.url} rel="noopener noreferrer" target="_blank" className="btn-solid" style={{ borderRadius: '0' }}>Buy</a>
                       <Checkbox className="right" />
                       {i < this.props.viatorEvents.length - 1 ?
                         <div className="space" />

@@ -17,14 +17,13 @@ class ViatorEvent extends Component {
   }
 
   render() {
-    const link = `https://www.viator.com/${this.props.event.url}`
     return (
       <div>
         <button onClick={ ()=> this.add(this.props.event) }>Add</button>
         <h1>{this.props.event.title}</h1>
         <h6>$ {this.props.event.price}</h6>
         <img src={this.props.event.image} />
-        <a href={link}>Link</a>
+        <a href={this.props.event.url}>Link</a>
       </div>
     )
   }

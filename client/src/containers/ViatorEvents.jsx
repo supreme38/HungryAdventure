@@ -63,7 +63,7 @@ class ViatorEvents extends Component {
           </div>
           <div>
           <span className="price">${event.price}</span>
-          <a href={`https://www.viator.com/${event.url}`}>{event.title}</a>
+          <a href={event.url}>{event.title}</a>
           </div>
         </Col>
         ))}
