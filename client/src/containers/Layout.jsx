@@ -45,10 +45,10 @@ class Layout extends React.Component {
        latitude: crd.latitude,
        longitude: crd.longitude
      })
-     console.log('Your current position is:');
-     console.log(`Latitude : ${crd.latitude}`);
-     console.log(`Longitude: ${crd.longitude}`);
-     console.log(`More or less ${crd.accuracy} meters.`);
+    //  console.log('Your current position is:');
+    //  console.log(`Latitude : ${crd.latitude}`);
+    //  console.log(`Longitude: ${crd.longitude}`);
+    //  console.log(`More or less ${crd.accuracy} meters.`);
    };
 
    const error = (err) => {

@@ -9,7 +9,6 @@ class Weather extends Component {
   }
 
   render() {
-    console.log('inside of weather component =>', this.props.weather)
     if (this.props.weather.weather === undefined) {
       return (
         <div>loading</div>
