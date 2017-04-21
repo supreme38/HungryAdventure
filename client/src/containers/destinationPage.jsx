@@ -40,7 +40,7 @@ class destinationPage extends Component {
           <h4>Price: ${list.price}</h4>
           <h4>Arrival: {list.arrivalDate}</h4>
           <h4>Departure: {list.departureDate}</h4>
-          <h4><a href={list.url}>More Info</a></h4>
+          <h4><a href={list.url} target="_blank">More Info</a></h4>
         </div>
       )
     } else if (list.hotel) {
@@ -49,7 +49,7 @@ class destinationPage extends Component {
           <h4>Hotel: {list.hotel}</h4>
           <h4>Pirce: ${list.price}</h4>
           <h4>Address: {list.address}</h4>
-          <h4><a href={list.url}>More Info</a></h4>
+          <h4><a href={list.url} target="_blank">More Info</a></h4>
         </div>
       )
     } else if (Array.isArray(list) && list[0].name) {
@@ -59,7 +59,7 @@ class destinationPage extends Component {
             <h6>{event.categories[0].title}</h6>
             <h6>Price: {event.price}</h6>
             <h6>Rating: {event.rating}</h6>
-            <h6><a href={event.url}>More Info</a></h6>
+            <h6><a href={event.url} target="_blank">More Info</a></h6>
             < br/>
           </div>
         ))
@@ -69,7 +69,7 @@ class destinationPage extends Component {
             <h6>{event.title}</h6>
             <h6>Price: ${event.price}</h6>
             <h6>Rating: {event.rating}</h6>
-            <h6><a href={event.url}>More Info</a></h6>
+            <h6><a href={event.url } target="_blank">More Info</a></h6>
             < br/>
           </div>
         ))
