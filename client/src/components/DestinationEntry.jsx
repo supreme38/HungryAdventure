@@ -7,7 +7,7 @@ import { fetchHotels } from '../actions/hotelAction';
 import { flightBudget } from '../actions/budgetAction';
 import { history, Link } from 'react-router-dom'
 import { browserHistory } from 'react-router';
-import { fetchEvents } from '../actions/yelpAction'
+import { fetchYelpEvents } from '../actions/yelpAction'
 import { fetchWeather } from '../actions/weatherAction'
 import { currentDestination } from '../actions/currentStateAction';
 import { destinationImage } from '../actions/budgetBarAction';
@@ -41,7 +41,7 @@ handleSelect = (destination, geo) => {
       })
     });
   this.props.destinationImage({ destination: destination.imageUrl[0] })
-  this.props.fetchEvents({ location: destination.city });
+  this.props.fetchYelpEvents({ location: `${destination.city} ${destination.country}` });
   this.props.fetchViator({ location: destination.city })
   this.props.currentDestination({ destination: destination });
   this.props.fetchFrommers({ location: destination.city });
@@ -81,4 +81,4 @@ const mapStateToProps = ({destinations, budget, geo, bar}) => ({
 });
 
 
-export default connect(mapStateToProps , { destinationSet, browserHistory, fetchGeo, fetchTerminal, fetchHotels, flightBudget, fetchEvents, fetchWeather, currentDestination, destinationImage, fetchViator, fetchFrommers } )(DestinationEntry);
+export default connect(mapStateToProps , { destinationSet, browserHistory, fetchGeo, fetchTerminal, fetchHotels, flightBudget, fetchYelpEvents, fetchWeather, currentDestination, destinationImage, fetchViator, fetchFrommers } )(DestinationEntry);
