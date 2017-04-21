@@ -25,7 +25,7 @@ constructor (props){
 handleSelect = (destination, geo) => {
   this.props.destinationSet(destination);
   this.props.flightBudget({ price: destination.price, original: Number(this.props.budget.original) });
-  this.props.fetchTerminal({ terminal: destination.IataCode })
+  this.props.fetchTerminal({ terminal: destination.IataCode, city: destination.city, country: destination.country })
   this.props.fetchGeo({ city: destination.city, country: destination.country })
     .then((result) => {
       this.props.fetchWeather({
