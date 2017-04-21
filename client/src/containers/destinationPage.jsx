@@ -38,8 +38,8 @@ class destinationPage extends Component {
         <div>
           <h4>Terminal: {list.originTerminal}</h4>
           <h4>Price: ${list.price}</h4>
-          <h4>Arrival: {list.arrivalDate}</h4>
-          <h4>Departure: {list.departureDate}</h4>
+          <h4>Arrving: {list.arrivalDate}</h4>
+          <h4>Leaving: {list.departureDate}</h4>
           <h4><a href={list.url} target="_blank">More Info</a></h4>
         </div>
       )
@@ -47,8 +47,8 @@ class destinationPage extends Component {
       return (
         <div>
           <h4>Hotel: {list.hotel}</h4>
-          <h4>Pirce: ${list.price}</h4>
-          <h4>Address: {list.address}</h4>
+          <h4>Price: ${list.price}</h4>
+          <h4>Location: {list.address}</h4>
           <h4><a href={list.url} target="_blank">More Info</a></h4>
         </div>
       )
