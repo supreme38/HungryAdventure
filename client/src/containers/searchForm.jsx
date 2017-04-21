@@ -114,7 +114,7 @@ class searchForm extends Component {
 
           <FormGroup>
             <Button
-              bsStyle="custom"
+              bsClass="btn btn-custom"
               type="submit"
               disabled={enableSubmit(this.props)}
               style={{ borderRadius: '0' }}
@@ -153,7 +153,10 @@ renderEndDatePicker.defaultProps = {
 renderEndDatePicker.propTypes = {
   showTime: PropTypes.bool,
   placeholder: PropTypes.string,
-  defaultValue: PropTypes.instanceOf(Date),
+  defaultValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.instanceOf(Date),
+  ]),
   input: PropTypes.shape({
     onChange: PropTypes.func,
     value: PropTypes.oneOfType([
