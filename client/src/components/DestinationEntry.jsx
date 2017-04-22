@@ -6,7 +6,7 @@ import { destinationSet } from '../actions/destinationAction';
 import { fetchGeo, fetchTerminal } from '../actions/geoAction';
 import { fetchHotels } from '../actions/hotelAction';
 import { flightBudget } from '../actions/budgetAction';
-import { fetchEvents } from '../actions/yelpAction';
+import { fetchYelpEvents } from '../actions/yelpAction';
 import { fetchWeather } from '../actions/weatherAction';
 import { currentDestination } from '../actions/currentStateAction';
 import { destinationImage } from '../actions/budgetBarAction';
@@ -42,7 +42,7 @@ class DestinationEntry extends Component {
       });
     });
     this.props.destinationImage({ destination: destination.imageUrl[0] });
-    this.props.fetchEvents({ location: destination.city });
+    this.props.fetchYelpEvents({ location: `${destination.city} ${destination.country}` });
     this.props.fetchViator({ location: destination.city });
     this.props.currentDestination({ destination });
     this.props.fetchFrommers({ location: destination.city });
@@ -95,7 +95,7 @@ DestinationEntry.propTypes = {
   fetchGeo: PropTypes.func.isRequired,
   fetchWeather: PropTypes.func.isRequired,
   fetchHotels: PropTypes.func.isRequired,
-  fetchEvents: PropTypes.func.isRequired,
+  fetchYelpEvents: PropTypes.func.isRequired,
   destinationImage: PropTypes.func.isRequired,
   fetchViator: PropTypes.func.isRequired,
   currentDestination: PropTypes.func.isRequired,
@@ -143,7 +143,7 @@ export default connect(mapStateToProps, {
   fetchTerminal,
   fetchHotels,
   flightBudget,
-  fetchEvents,
+  fetchYelpEvents,
   fetchWeather,
   currentDestination,
   destinationImage,
